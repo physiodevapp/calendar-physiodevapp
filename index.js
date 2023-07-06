@@ -21,6 +21,9 @@ app.use( express.json() )
 // Routes config
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/events', require('./routes/event.routes'))
+app.use('*', (req, res) => {
+  res.sendFile(`${__dirname}/public/index.html`)
+})
 
 // Start to listen requests
 const port = process.env.PORT
